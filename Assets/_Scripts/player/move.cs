@@ -56,7 +56,7 @@ public class NewBehaviourScript : MonoBehaviour
         isGrounded = ground != null;
         isJumping = !isGrounded && rb.velocity.y > 0.1f;
 
-        if(timming > timeToNextSurfers && Input.GetKeyDown(KeyCode.L) && !anim.GetCurrentAnimatorStateInfo(3).IsName("atack") && stamina >= staminaSurfers){
+        if(timming > timeToNextSurfers && Input.GetKeyDown(KeyCode.L) && stamina >= staminaSurfers){
             GetComponent<player>().DecreaseStamina(staminaSurfers);
             surfers();
         }
