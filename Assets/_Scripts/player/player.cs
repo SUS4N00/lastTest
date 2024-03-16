@@ -19,9 +19,11 @@ public class player : MonoBehaviour
     public GameObject healingPrefab;
     public AudioManager audioManager;
     private Animator anim;
+    public bool isDead;
     // Start is called before the first frame update
     void Start()
     {
+        isDead = false;
         staminaRegenBonus = 0;
         potionColdDown = 20;
         staminaRegenRate = 1f;
@@ -85,11 +87,10 @@ public class player : MonoBehaviour
         }
     }
     void Die(){
+        isDead = true;
         anim.SetBool("isDead", true);
         GetComponent<NewBehaviourScript>().enabled = false;
         GetComponent<atack>().enabled = false;
-        GetComponent<Rigidbody2D>().simulated = false;
-        GetComponent<Collider2D>().enabled = false;
     }
     IEnumerator RegenerateStamina()
     {

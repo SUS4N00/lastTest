@@ -25,7 +25,7 @@ public class enemyMove : MonoBehaviour
     public bool isFacingRight = false;
     public AudioManager audioManager;
     public float move;
-    private bool foundedTarget;
+    public bool foundedTarget;
     public float timer;
     // Start is called before the first frame update
     void Start()
@@ -38,7 +38,9 @@ public class enemyMove : MonoBehaviour
     }
 
     void Update(){
-        timer += Time.deltaTime;
+        if(foundedTarget == false){
+            timer += Time.deltaTime;
+        }
         findTarget();
     }
     void FixedUpdate(){
@@ -77,7 +79,7 @@ public class enemyMove : MonoBehaviour
                 move = 0;
             }
             if(gameObject.tag == "canChien" || gameObject.tag == "canChien2"){
-                if(seePlayer() == true && Mathf.Abs(attackPoint.position.x - playerPosition.position.x) <= attackRange * 3.5f){
+                if(seePlayer() == true && Mathf.Abs(transform.position.x - playerPosition.position.x) <= 3){
                     foundedTarget = true;
                 }
             }else if(gameObject.tag == "tamXa"){
@@ -89,6 +91,10 @@ public class enemyMove : MonoBehaviour
                 foundedTarget = true;
             }
         }else{
+            if(playerPosition.GetComponent<player>().isDead == true){
+                foundedTarget = false;
+                return;
+            }
             if(gameObject.tag == "canChien" || gameObject.tag == "canChien2"){
                 if(attackPoint.position.x > playerPosition.position.x + attackRange + 0.16f){
                     move = -5;
