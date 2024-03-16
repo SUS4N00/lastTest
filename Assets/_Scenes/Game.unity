@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: 82479771}
   - component: {fileID: 82479770}
   - component: {fileID: 82479769}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnvironmentTiles_2 (1)
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -1813,7 +1813,7 @@ GameObject:
   - component: {fileID: 723272999}
   - component: {fileID: 723272998}
   - component: {fileID: 723272997}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnvironmentTiles_2
   m_TagString: ground
   m_Icon: {fileID: 0}
