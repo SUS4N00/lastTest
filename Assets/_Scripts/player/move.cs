@@ -45,7 +45,7 @@ public class NewBehaviourScript : MonoBehaviour
         if(GetComponent<player>().hited){
             move = 0f;
         }
-        if(anim.GetCurrentAnimatorStateInfo(3).IsName("atack") || anim.GetCurrentAnimatorStateInfo(3).IsName("throw") || anim.GetCurrentAnimatorStateInfo(2).IsName("playerHealing")){
+        if(anim.GetCurrentAnimatorStateInfo(3).IsName("attack") || anim.GetCurrentAnimatorStateInfo(3).IsName("throw") || anim.GetCurrentAnimatorStateInfo(2).IsName("playerHealing")){
             move = 0f;
         }
         if(jumpPoint == null){
