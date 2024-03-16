@@ -8,7 +8,7 @@ public class NewBehaviourScript : MonoBehaviour
     float timming;
     float where;
     float stamina;
-    float staminaSurfers;
+    float staminaDash;
     float staminaJump;
     private bool isFacingRight = true;
     public bool checkGround = false;
@@ -16,8 +16,8 @@ public class NewBehaviourScript : MonoBehaviour
     public float move;
     public float jumpHeight;
     public float footSize = 0.1f;
-    public float surfersSpeed;
-    public float timeToNextSurfers;
+    public float dashSpeed;
+    public float timeToNextDash;
     private Rigidbody2D rb;
     private Animator anim;
     public Transform jumpPoint;
@@ -28,9 +28,9 @@ public class NewBehaviourScript : MonoBehaviour
     void Start()
     {
         speed = 5f;
-        surfersSpeed = 10;
+        dashSpeed = 10;
         jumpHeight = 5.7f;
-        staminaSurfers = 15f;
+        staminaDash = 15f;
         staminaJump = 15f;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -56,9 +56,9 @@ public class NewBehaviourScript : MonoBehaviour
         isGrounded = ground != null;
         isJumping = !isGrounded && rb.velocity.y > 0.1f;
 
-        if(timming > timeToNextSurfers && Input.GetKeyDown(KeyCode.L) && stamina >= staminaSurfers){
-            GetComponent<player>().DecreaseStamina(staminaSurfers);
-            surfers();
+        if(timming > timeToNextDash && Input.GetKeyDown(KeyCode.L) && stamina >= staminaDash){
+            GetComponent<player>().DecreaseStamina(staminaDash);
+            dash();
         }
         jump(isGrounded);
         flip(move);
@@ -74,7 +74,7 @@ public class NewBehaviourScript : MonoBehaviour
     {
         //move = Input.GetAxis("Horizontal");
         Vector2 moveDirection = new Vector2(move, 0f);
-        if(!anim.GetCurrentAnimatorStateInfo(2).IsName("surfers")){
+        if(!anim.GetCurrentAnimatorStateInfo(2).IsName("dash")){
 
             rb.velocity = new Vector2(moveDirection.x * speed, rb.velocity.y);
 
@@ -112,8 +112,8 @@ public class NewBehaviourScript : MonoBehaviour
         }
     }
 
-    void surfers(){
-        timeToNextSurfers = timming + 0.7f;
+    void dash(){
+        timeToNextDash = timming + 0.7f;
         if(Input.GetKey(KeyCode.A)){
             where = -1;
         }else if(Input.GetKey(KeyCode.D)){
@@ -123,8 +123,8 @@ public class NewBehaviourScript : MonoBehaviour
         }
         audioManager.playSfx(audioManager.surfers);
         Vector2 moveDirection = new Vector2(where, 0f);
-        rb.velocity = new Vector2(moveDirection.x * surfersSpeed, rb.velocity.y);
-        anim.SetTrigger("surfers");
+        rb.velocity = new Vector2(moveDirection.x * dashSpeed, rb.velocity.y);
+        anim.SetTrigger("dash");
     }
     void OnDrawGizmosSelected()
     {

@@ -18,7 +18,7 @@ public class enemyHit2 : MonoBehaviour
             //detect player in range of attack
             Collider2D hitPlayer = Physics2D.OverlapCircle(attackPoint2.position, attackRange2, playerLayer);
             //damage
-            if(hitPlayer != null && !hitPlayer.GetComponent<Animator>().GetCurrentAnimatorStateInfo(2).IsName("surfers")){
+            if(hitPlayer != null && !hitPlayer.GetComponent<Animator>().GetCurrentAnimatorStateInfo(2).IsName("dash")){
                 hitPlayer.GetComponent<player>().TakeDamage(attackDamage2);
                 audioManager.playSfx(audioManager.enemyHit);
             }else{
