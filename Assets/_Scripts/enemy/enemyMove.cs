@@ -79,11 +79,11 @@ public class enemyMove : MonoBehaviour
                 move = 0;
             }
             if(gameObject.tag == "canChien" || gameObject.tag == "canChien2"){
-                if(seePlayer() == true && Mathf.Abs(transform.position.x - playerPosition.position.x) <= 3){
+                if(seePlayer() == true && Mathf.Abs(transform.position.x - playerPosition.position.x) <= 3 && Mathf.Abs(transform.position.y - playerPosition.position.y) <= 0.88){
                     foundedTarget = true;
                 }
             }else if(gameObject.tag == "tamXa"){
-                if(seePlayer() == true && Mathf.Abs(attackPoint.position.x - playerPosition.position.x) <= attackRange){
+                if(seePlayer() == true && Mathf.Abs(attackPoint.position.x - playerPosition.position.x) <= attackRange && Mathf.Abs(transform.position.y - playerPosition.position.y) <= attackRange){
                     foundedTarget = true;
                 }
             }

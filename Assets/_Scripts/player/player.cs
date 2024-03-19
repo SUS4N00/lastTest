@@ -55,7 +55,7 @@ public class player : MonoBehaviour
             GetComponent<atack>().currentMadNess += 10;
             audioManager.playSfx(audioManager.hurt);
         }
-        if(heal <= 0){
+        if(heal <= 0 && isDead == false){
             audioManager.playSfx(audioManager.die);
             Die();
         }
