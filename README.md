@@ -1,3 +1,1 @@
-test git
-this is 2 time
-let check
+the first game made by me
